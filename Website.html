@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Civil Engineer | Infrastructure Solutions – Kampala, Uganda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay:    #E8D5B7;
+    --earth:   #C4A882;
+    --rust:    #B85C38;
+    --deep:    #1C1410;
+    --ink:     #2D1F14;
+    --sage:    #4A6741;
+    --sky:     #4A7C9E;
+    --offwhite:#FAF6F0;
+    --gold:    #D4A847;
+    --shadow:  rgba(28,20,16,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--offwhite);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 5vw;
+    background: rgba(250,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,168,130,0.3);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 30px var(--shadow); }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--rust);
+    letter-spacing: .02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 2.2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: .82rem; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink);
+    text-decoration: none; position: relative; padding-bottom: 3px;
+    transition: color .25s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--rust);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--rust); color: #fff !important;
+    padding: .45rem 1.2rem !important;
+    border-radius: 3px;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--ink) !important; color: #fff !important; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--ink); transition: all .3s;
+  }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0; pointer-events: none; opacity: .07;
+    background-image: repeating-linear-gradient(
+      0deg, var(--ink) 0, var(--ink) 1px, transparent 1px, transparent 60px
+    ), repeating-linear-gradient(
+      90deg, var(--ink) 0, var(--ink) 1px, transparent 1px, transparent 60px
+    );
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5vw 6rem 6vw;
+    position: relative; z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--clay); border: 1px solid var(--earth);
+    padding: .35rem .9rem; border-radius: 50px;
+    font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: 1.8rem;
+    animation: fadeUp .7s ease both;
+  }
+  .hero-badge::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--rust); flex-shrink: 0;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.12;
+    color: var(--deep);
+    margin-bottom: 1.4rem;
+    animation: fadeUp .7s .1s ease both;
+  }
+  .hero-headline em {
+    font-style: normal; color: var(--rust);
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300; line-height: 1.75;
+    color: #5a4535; max-width: 520px;
+    margin-bottom: 2.4rem;
+    animation: fadeUp .7s .2s ease both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp .7s .3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--rust); color: #fff;
+    padding: .85rem 2rem; border-radius: 4px;
+    font-weight: 600; font-size: .9rem; letter-spacing: .03em;
+    text-decoration: none; display: inline-block;
+    transition: background .25s, transform .2s, box-shadow .25s;
+    box-shadow: 0 4px 20px rgba(184,92,56,.35);
+  }
+  .btn-primary:hover {
+    background: var(--ink); transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(184,92,56,.4);
+  }
+
+  .btn-outline {
+    border: 2px solid var(--ink); color: var(--ink);
+    padding: .85rem 2rem; border-radius: 4px;
+    font-weight: 600; font-size: .9rem; letter-spacing: .03em;
+    text-decoration: none; display: inline-block;
+    transition: all .25s;
+  }
+  .btn-outline:hover {
+    background: var(--ink); color: var(--offwhite);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--clay);
+    animation: fadeUp .7s .4s ease both;
+  }
+  .stat-item { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem; font-weight: 900; color: var(--rust);
+  }
+  .stat-label {
+    font-size: .72rem; font-weight: 600; letter-spacing: .07em;
+    text-transform: uppercase; color: #7a6050; margin-top: .2rem;
+  }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-visual {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  /* SVG Engineering graphic */
+  .hero-svg-wrap {
+    width: 75%; max-width: 420px;
+    animation: fadeIn 1s .4s ease both;
+  }
+
+  .hero-caption {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(10px);
+    padding: .8rem 1.5rem; border-radius: 50px;
+    color: rgba(255,255,255,.85);
+    font-size: .78rem; font-weight: 500; letter-spacing: .05em;
+    text-align: center; white-space: nowrap;
+  }
+
+  /* ── QUICK VALUES ── */
+  #values {
+    background: var(--deep);
+    padding: 3.5rem 5vw;
+    display: flex; flex-wrap: wrap;
+    align-items: center; gap: 1rem;
+    justify-content: center;
+  }
+
+  .value-pill {
+    display: flex; align-items: center; gap: .6rem;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    padding: .65rem 1.4rem; border-radius: 50px;
+    color: var(--clay);
+    font-size: .82rem; font-weight: 500; letter-spacing: .03em;
+    transition: background .25s, transform .2s;
+  }
+  .value-pill:hover {
+    background: rgba(184,92,56,.25); transform: translateY(-2px);
+  }
+  .value-pill .icon { font-size: 1rem; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 6vw; }
+
+  .section-label {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem; font-weight: 500; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900; line-height: 1.2;
+    color: var(--deep); margin-bottom: 1.4rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem; font-weight: 300; line-height: 1.8;
+    color: #5a4535; max-width: 560px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--offwhite);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+
+  .about-text .section-title { margin-bottom: 1.2rem; }
+
+  .about-story {
+    background: linear-gradient(135deg, #fff5ee, #fef9f4);
+    border-left: 4px solid var(--rust);
+    padding: 1.5rem 1.8rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.8rem 0;
+    font-size: .95rem; line-height: 1.8; color: var(--ink);
+    font-style: italic;
+  }
+
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: .75rem; margin-top: 1.8rem;
+  }
+
+  .skill-tag {
+    display: flex; align-items: center; gap: .5rem;
+    background: var(--clay); border-radius: 6px;
+    padding: .65rem 1rem;
+    font-size: .82rem; font-weight: 600; color: var(--ink);
+    transition: background .2s;
+  }
+  .skill-tag:hover { background: var(--earth); }
+  .skill-tag .sk-icon { font-size: .9rem; }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--deep);
+    border-radius: 12px; overflow: hidden;
+    aspect-ratio: 4/5;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative;
+  }
+
+  .about-card-graphic {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+
+  .about-card-footer {
+    position: relative; z-index: 2;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(28,20,16,.95) 0%, transparent 100%);
+  }
+  .about-card-footer h3 {
+    font-family: 'Playfair Display', serif;
+    color: #fff; font-size: 1.3rem; margin-bottom: .3rem;
+  }
+  .about-card-footer p {
+    color: var(--clay); font-size: .83rem; font-weight: 400;
+  }
+
+  .about-badge {
+    position: absolute; top: -1.5rem; right: -1.5rem;
+    width: 110px; height: 110px;
+    background: var(--rust);
+    border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #fff; text-align: center;
+    box-shadow: 0 8px 30px rgba(184,92,56,.4);
+    z-index: 3;
+  }
+  .about-badge strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900; line-height: 1;
+  }
+  .about-badge span { font-size: .65rem; letter-spacing: .06em; opacity: .9; margin-top: .2rem; }
+
+  /* ── PROJECTS ── */
+  #projects { background: #F5EFE6; }
+
+  .projects-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1rem;
+  }
+
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: #fff; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 20px var(--shadow);
+    transition: transform .3s, box-shadow .3s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(28,20,16,.18);
+  }
+
+  .project-thumb {
+    aspect-ratio: 16/10;
+    background: var(--ink);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .proj-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    background: var(--rust); color: #fff;
+    font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; padding: .3rem .75rem; border-radius: 50px;
+  }
+
+  .project-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+  .project-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--deep); margin-bottom: .6rem;
+  }
+  .project-body p {
+    font-size: .88rem; line-height: 1.7; color: #5a4535;
+    flex: 1;
+  }
+
+  .project-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 1.3rem; padding-top: 1rem;
+    border-top: 1px solid var(--clay);
+    font-size: .75rem; font-weight: 600;
+    color: var(--earth);
+  }
+  .project-result {
+    color: var(--sage); font-weight: 700;
+    background: rgba(74,103,65,.1);
+    padding: .2rem .6rem; border-radius: 4px;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--offwhite); }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+
+  .service-card {
+    background: #fff;
+    border: 2px solid var(--clay);
+    border-radius: 10px;
+    padding: 2.2rem 1.8rem;
+    position: relative; overflow: hidden;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+  }
+  .service-card:hover {
+    border-color: var(--rust);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(184,92,56,.15);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--rust), var(--gold));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 2.2rem; margin-bottom: 1.2rem; display: block;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--deep); margin-bottom: .7rem;
+  }
+  .service-card p {
+    font-size: .88rem; line-height: 1.75; color: #5a4535;
+  }
+  .service-price {
+    display: inline-block; margin-top: 1.3rem;
+    font-size: .78rem; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--rust);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── TESTIMONIAL ── */
+  #trust {
+    background: var(--deep);
+    padding: 6rem 6vw;
+    text-align: center;
+  }
+
+  .trust-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-weight: 700; line-height: 1.5;
+    color: var(--clay); max-width: 820px; margin: 0 auto;
+  }
+  .trust-quote::before { content: '\201C'; color: var(--rust); }
+  .trust-quote::after  { content: '\201D'; color: var(--rust); }
+
+  .trust-attribution {
+    margin-top: 2rem;
+    font-size: .82rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--earth);
+  }
+
+  .trust-metrics {
+    display: flex; justify-content: center; gap: 4rem;
+    margin-top: 4rem; padding-top: 3rem;
+    border-top: 1px solid rgba(196,168,130,.2);
+    flex-wrap: wrap;
+  }
+
+  .trust-metric {
+    text-align: center;
+  }
+  .trust-metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900; color: var(--rust);
+    display: block; line-height: 1;
+  }
+  .trust-metric-label {
+    font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--earth);
+    margin-top: .5rem;
+  }
+
+  /* ── INSIGHTS ── */
+  #insights { background: #F5EFE6; }
+
+  .insights-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+
+  .insight-card {
+    background: #fff; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 15px var(--shadow);
+    transition: transform .3s;
+    cursor: pointer;
+  }
+  .insight-card:hover { transform: translateY(-5px); }
+
+  .insight-thumb {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .insight-thumb-1 { background: linear-gradient(135deg, #1C4E6B, #4A7C9E); }
+  .insight-thumb-2 { background: linear-gradient(135deg, #3A5C33, #4A6741); }
+  .insight-thumb-3 { background: linear-gradient(135deg, #6B3A1C, #B85C38); }
+
+  .insight-body { padding: 1.6rem; }
+  .insight-cat {
+    font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: .6rem;
+  }
+  .insight-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--deep); margin-bottom: .6rem; line-height: 1.4;
+  }
+  .insight-body p {
+    font-size: .84rem; line-height: 1.7; color: #5a4535;
+  }
+  .insight-link {
+    display: inline-block; margin-top: 1rem;
+    font-size: .78rem; font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--rust);
+    text-decoration: none;
+  }
+  .insight-link::after { content: ' →'; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--offwhite);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+
+  .contact-info h2 { margin-bottom: 1rem; }
+  .contact-info .section-subtitle { margin-bottom: 2.5rem; }
+
+  .contact-methods { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-method {
+    display: flex; align-items: center; gap: 1rem;
+    background: #fff; border: 1px solid var(--clay);
+    border-radius: 8px; padding: 1rem 1.3rem;
+    text-decoration: none; color: var(--ink);
+    font-weight: 500; font-size: .9rem;
+    transition: border-color .25s, transform .2s, box-shadow .25s;
+  }
+  .contact-method:hover {
+    border-color: var(--rust); transform: translateX(4px);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+  .contact-method .cm-icon {
+    width: 42px; height: 42px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .cm-whatsapp { background: #25D366; }
+  .cm-phone    { background: var(--sky); }
+  .cm-email    { background: var(--rust); }
+  .contact-method .cm-detail { display: flex; flex-direction: column; }
+  .contact-method .cm-label {
+    font-size: .7rem; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--earth);
+  }
+  .contact-method .cm-value { font-size: .92rem; font-weight: 600; color: var(--ink); }
+
+  .contact-form {
+    background: #fff; border-radius: 12px;
+    padding: 2.5rem; box-shadow: 0 4px 30px var(--shadow);
+  }
+  .contact-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--deep); margin-bottom: 1.8rem;
+  }
+
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block; font-size: .78rem; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: var(--earth); margin-bottom: .45rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; background: var(--offwhite);
+    border: 2px solid var(--clay); border-radius: 6px;
+    padding: .8rem 1rem; font-family: 'DM Sans', sans-serif;
+    font-size: .9rem; color: var(--ink);
+    transition: border-color .25s;
+    outline: none; appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--rust);
+  }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+
+  .form-submit {
+    width: 100%; background: var(--rust); color: #fff;
+    border: none; border-radius: 6px;
+    padding: 1rem; font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 700; letter-spacing: .04em;
+    cursor: pointer; margin-top: .5rem;
+    transition: background .25s, transform .2s;
+  }
+  .form-submit:hover {
+    background: var(--ink); transform: translateY(-2px);
+  }
+
+  /* ── FINAL CTA ── */
+  #final-cta {
+    background: linear-gradient(135deg, var(--rust) 0%, #8B3520 100%);
+    padding: 7rem 6vw;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  #final-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px,
+      transparent 1px, transparent 40px
+    );
+  }
+  #final-cta .section-label { color: rgba(255,255,255,.7); }
+  #final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900; color: #fff; margin-bottom: 1.2rem;
+  }
+  #final-cta p {
+    color: rgba(255,255,255,.8); font-size: 1.05rem;
+    max-width: 520px; margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+  #final-cta .btn-white {
+    background: #fff; color: var(--rust);
+    padding: 1rem 2.5rem; border-radius: 4px;
+    font-weight: 700; font-size: 1rem;
+    text-decoration: none; display: inline-block;
+    transition: transform .2s, box-shadow .25s;
+    box-shadow: 0 4px 30px rgba(0,0,0,.25);
+  }
+  #final-cta .btn-white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0,0,0,.3);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    padding: 3rem 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--clay);
+  }
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: .78rem; font-weight: 600; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--earth);
+    text-decoration: none; transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--clay); }
+  .footer-copy {
+    font-size: .78rem; color: #5a4535;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+  .float-anim { animation: float 5s ease-in-out infinite; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    #home      { grid-template-columns: 1fr; }
+    .hero-right { min-height: 400px; }
+    #about     { grid-template-columns: 1fr; }
+    #contact   { grid-template-columns: 1fr; }
+    .projects-grid  { grid-template-columns: 1fr 1fr; }
+    .services-grid  { grid-template-columns: 1fr 1fr; }
+    .insights-grid  { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 4.5rem 5vw; }
+    .projects-grid,
+    .services-grid,
+    .insights-grid { grid-template-columns: 1fr; }
+    .trust-metrics { gap: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    #final-cta { padding: 5rem 5vw; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 65px; left: 0; right: 0; z-index: 99;
+    background: rgba(250,246,240,.97);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 5vw 2rem;
+    flex-direction: column; gap: .5rem;
+    border-bottom: 1px solid var(--clay);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: .95rem; font-weight: 600; padding: .65rem 0;
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid rgba(196,168,130,.25);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#home">Eng. Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home"     onclick="toggleMenu()">Home</a>
+  <a href="#about"    onclick="toggleMenu()">About</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#insights" onclick="toggleMenu()">Insights</a>
+  <a href="#contact"  onclick="toggleMenu()">Contact Me</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-pattern"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">📍 Kampala, Uganda · Available for Projects</div>
+
+    <h1 class="hero-headline">
+      Civil Engineer Building<br>
+      <em>Infrastructure That Matters</em>
+    </h1>
+
+    <p class="hero-sub">
+      I design drainage systems, supervise construction, and create engineering solutions
+      that directly improve lives in Kampala and beyond — not just on paper, but on the ground.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Let's Work Together →</a>
+      <a href="#projects" class="btn-outline">View My Projects</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">20%</span>
+        <span class="stat-label">Road Condition<br>Improvement</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Drainage<br>Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Problem-First<br>Approach</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-svg-wrap float-anim">
+        <svg viewBox="0 0 420 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground layer -->
+          <rect x="30" y="390" width="360" height="60" rx="4" fill="#3A2810" opacity=".6"/>
+          <!-- Road cross-section -->
+          <rect x="60" y="370" width="300" height="28" rx="3" fill="#4A3820"/>
+          <rect x="60" y="370" width="300" height="8" rx="3" fill="#6B5540"/>
+          <!-- Drainage pipe left -->
+          <ellipse cx="80" cy="390" rx="18" ry="18" fill="#2A4A5E" stroke="#4A7C9E" strokeWidth="3"/>
+          <ellipse cx="80" cy="390" rx="10" ry="10" fill="#1C2A35"/>
+          <!-- Drainage pipe right -->
+          <ellipse cx="340" cy="390" rx="18" ry="18" fill="#2A4A5E" stroke="#4A7C9E" strokeWidth="3"/>
+          <ellipse cx="340" cy="390" rx="10" ry="10" fill="#1C2A35"/>
+          <!-- Flow arrows -->
+          <path d="M100 390 L155 390" stroke="#4A7C9E" strokeWidth="2" strokeDasharray="6,4" opacity=".7"/>
+          <path d="M265 390 L320 390" stroke="#4A7C9E" strokeWidth="2" strokeDasharray="6,4" opacity=".7"/>
+          <!-- Building structure -->
+          <rect x="155" y="200" width="110" height="170" rx="4" fill="#2D1F14"/>
+          <rect x="155" y="200" width="110" height="12" rx="2" fill="#B85C38"/>
+          <!-- Windows -->
+          <rect x="170" y="230" width="30" height="25" rx="2" fill="#4A7C9E" opacity=".8"/>
+          <rect x="220" y="230" width="30" height="25" rx="2" fill="#4A7C9E" opacity=".8"/>
+          <rect x="170" y="278" width="30" height="25" rx="2" fill="#D4A847" opacity=".7"/>
+          <rect x="220" y="278" width="30" height="25" rx="2" fill="#D4A847" opacity=".7"/>
+          <rect x="170" y="326" width="30" height="25" rx="2" fill="#4A7C9E" opacity=".6"/>
+          <rect x="220" y="326" width="30" height="25" rx="2" fill="#4A7C9E" opacity=".6"/>
+          <!-- Door -->
+          <rect x="195" y="340" width="30" height="30" rx="2" fill="#B85C38" opacity=".9"/>
+          <!-- Roof/top accent -->
+          <polygon points="140,200 210,155 280,200" fill="#B85C38"/>
+          <polygon points="140,200 210,155 280,200" fill="none" stroke="#D4A847" strokeWidth="2"/>
+          <!-- Grid/technical overlay -->
+          <line x1="30" y1="100" x2="390" y2="100" stroke="rgba(255,255,255,.06)" strokeWidth="1"/>
+          <line x1="30" y1="150" x2="390" y2="150" stroke="rgba(255,255,255,.06)" strokeWidth="1"/>
+          <line x1="30" y1="250" x2="390" y2="250" stroke="rgba(255,255,255,.04)" strokeWidth="1"/>
+          <line x1="100" y1="50" x2="100" y2="420" stroke="rgba(255,255,255,.04)" strokeWidth="1"/>
+          <line x1="210" y1="50" x2="210" y2="420" stroke="rgba(255,255,255,.04)" strokeWidth="1"/>
+          <line x1="320" y1="50" x2="320" y2="420" stroke="rgba(255,255,255,.04)" strokeWidth="1"/>
+          <!-- Sun/light element -->
+          <circle cx="350" cy="80" r="35" fill="#D4A847" opacity=".15"/>
+          <circle cx="350" cy="80" r="22" fill="#D4A847" opacity=".25"/>
+          <circle cx="350" cy="80" r="12" fill="#D4A847" opacity=".5"/>
+          <!-- Trees -->
+          <rect x="90" y="330" width="8" height="40" fill="#3A5C33"/>
+          <ellipse cx="94" cy="318" rx="22" ry="28" fill="#4A6741"/>
+          <rect x="310" y="330" width="8" height="40" fill="#3A5C33"/>
+          <ellipse cx="314" cy="318" rx="22" ry="28" fill="#4A6741"/>
+          <!-- Dimension lines -->
+          <line x1="50" y1="200" x2="50" y2="370" stroke="#B85C38" strokeWidth="1.5" opacity=".6"/>
+          <line x1="44" y1="200" x2="56" y2="200" stroke="#B85C38" strokeWidth="1.5" opacity=".6"/>
+          <line x1="44" y1="370" x2="56" y2="370" stroke="#B85C38" strokeWidth="1.5" opacity=".6"/>
+          <text x="58" y="290" fill="#B85C38" fontSize="10" opacity=".7" fontFamily="monospace">8.5m</text>
+          <!-- Annotation dots -->
+          <circle cx="80" cy="390" r="4" fill="#4A7C9E"/>
+          <circle cx="340" cy="390" r="4" fill="#4A7C9E"/>
+        </svg>
+      </div>
+      <div class="hero-caption">⚙️ Infrastructure Design · Kampala, UG</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK VALUES -->
+<div id="values">
+  <div class="value-pill"><span class="icon">🏗️</span> Site Supervision</div>
+  <div class="value-pill"><span class="icon">🌧️</span> Drainage Solutions</div>
+  <div class="value-pill"><span class="icon">📐</span> AutoCAD Design</div>
+  <div class="value-pill"><span class="icon">📍</span> GPS Data Collection</div>
+  <div class="value-pill"><span class="icon">🛣️</span> Road Maintenance</div>
+  <div class="value-pill"><span class="icon">🌍</span> Environmental Systems</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text">
+    <span class="section-label">// About Me</span>
+    <h2 class="section-title">More Than Blueprints.<br>I Build Solutions.</h2>
+    <p class="section-subtitle">
+      I'm a Civil Engineer based in Kampala with a focus on practical, ground-level
+      infrastructure that creates measurable change for real communities.
+    </p>
+
+    <div class="about-story">
+      "Growing up, I watched contaminated water affect children in our community. 
+      That moment shaped everything — I didn't just want to be an engineer. 
+      I wanted to be an engineer who <em>fixes things that matter</em>."
+    </div>
+
+    <p style="font-size:.9rem;line-height:1.8;color:#5a4535;margin-bottom:1rem;">
+      My approach is simple: understand the problem deeply before touching the tools.
+      Whether it's a flooding neighbourhood, a crumbling road, or an unsafe construction site —
+      I bring structured analysis and practical execution to every project.
+    </p>
+
+    <p style="font-size:.9rem;line-height:1.8;color:#5a4535;">
+      <strong>Vision:</strong> To improve infrastructure quality and quality of life across Uganda,
+      one well-engineered solution at a time.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-tag"><span class="sk-icon">🏛️</span> Structural Analysis</div>
+      <div class="skill-tag"><span class="sk-icon">🌊</span> Drainage Systems</div>
+      <div class="skill-tag"><span class="sk-icon">📐</span> AutoCAD Design</div>
+      <div class="skill-tag"><span class="sk-icon">📡</span> GPS / Data Collection</div>
+      <div class="skill-tag"><span class="sk-icon">🏗️</span> Construction Supervision</div>
+      <div class="skill-tag"><span class="sk-icon">🌱</span> Environmental Systems</div>
+    </div>
+  </div>
+
+  <div class="about-visual">
+    <div class="about-card">
+      <div class="about-card-graphic">
+        <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px">
+          <!-- Blueprint background lines -->
+          <rect width="300" height="380" fill="#0D1B2A"/>
+          <g opacity=".12" stroke="#4A7C9E">
+            <line x1="0" y1="40"  x2="300" y2="40"/>
+            <line x1="0" y1="80"  x2="300" y2="80"/>
+            <line x1="0" y1="120" x2="300" y2="120"/>
+            <line x1="0" y1="160" x2="300" y2="160"/>
+            <line x1="0" y1="200" x2="300" y2="200"/>
+            <line x1="0" y1="240" x2="300" y2="240"/>
+            <line x1="0" y1="280" x2="300" y2="280"/>
+            <line x1="0" y1="320" x2="300" y2="320"/>
+            <line x1="0" y1="360" x2="300" y2="360"/>
+            <line x1="40"  y1="0" x2="40"  y2="380"/>
+            <line x1="80"  y1="0" x2="80"  y2="380"/>
+            <line x1="120" y1="0" x2="120" y2="380"/>
+            <line x1="160" y1="0" x2="160" y2="380"/>
+            <line x1="200" y1="0" x2="200" y2="380"/>
+            <line x1="240" y1="0" x2="240" y2="380"/>
+            <line x1="280" y1="0" x2="280" y2="380"/>
+          </g>
+          <!-- Drainage cross-section drawing -->
+          <path d="M30 280 L30 180 Q30 160 50 160 L130 160 L150 130 L170 160 L250 160 Q270 160 270 180 L270 280 Z"
+            fill="none" stroke="#4A7C9E" strokeWidth="2"/>
+          <path d="M80 280 L80 200 Q80 190 90 190 L150 190 L150 180 L210 190 Q220 190 220 200 L220 280"
+            fill="none" stroke="#B85C38" strokeWidth="1.5" strokeDasharray="5,3"/>
+          <!-- Water flow arrows -->
+          <path d="M60 240 L90 240 M85 235 L90 240 L85 245" stroke="#4A7C9E" strokeWidth="1.5"/>
+          <path d="M240 240 L210 240 M215 235 L210 240 L215 245" stroke="#4A7C9E" strokeWidth="1.5"/>
+          <!-- Dimension annotations -->
+          <text x="148" y="118" fill="#D4A847" fontSize="11" fontFamily="monospace">▲ Crown</text>
+          <text x="22"  y="155" fill="#4A7C9E" fontSize="9"  fontFamily="monospace">Shoulder</text>
+          <text x="200" y="155" fill="#4A7C9E" fontSize="9"  fontFamily="monospace">Shoulder</text>
+          <text x="110" y="310" fill="#4A6741" fontSize="9"  fontFamily="monospace">Sub-grade</text>
+          <!-- Title block -->
+          <rect x="10" y="336" width="280" height="36" fill="none" stroke="#4A7C9E" strokeWidth="1" opacity=".4"/>
+          <text x="20"  y="352" fill="#4A7C9E" fontSize="8" fontFamily="monospace" opacity=".8">DRG NO: KLA-DRN-001</text>
+          <text x="20"  y="364" fill="#D4A847" fontSize="8" fontFamily="monospace" opacity=".8">DRAINAGE X-SECTION · KAMPALA</text>
+          <text x="230" y="358" fill="#B85C38" fontSize="8" fontFamily="monospace" opacity=".8">1:50</text>
+        </svg>
+      </div>
+      <div class="about-card-footer">
+        <h3>Technical Drawing</h3>
+        <p>Drainage Cross-Section · Kampala Infrastructure</p>
+      </div>
+    </div>
+    <div class="about-badge">
+      <strong>5+</strong>
+      <span>YRS<br>FIELD<br>EXP</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div>
+      <span class="section-label">// Featured Work</span>
+      <h2 class="section-title">Projects That<br>Solved Real Problems</h2>
+    </div>
+    <a href="#projects" class="btn-outline" style="flex-shrink:0">View All Projects</a>
+  </div>
+
+  <div class="projects-grid">
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#1C3A52,#2D5A7A)">
+        <span class="proj-tag">Drainage</span>
+        <svg viewBox="0 0 280 175" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%;opacity:.7">
+          <rect x="20" y="120" width="240" height="35" fill="#1A3040"/>
+          <path d="M20 120 Q40 80 80 90 Q120 100 140 70 Q160 40 200 60 Q230 75 260 55 L260 120 Z" fill="#2D6080" opacity=".6"/>
+          <path d="M20 120 Q50 95 90 105 Q130 115 150 85 Q170 55 205 75 Q235 88 260 70 L260 120 Z" fill="#3A7A99" opacity=".5"/>
+          <circle cx="60" cy="80" r="3" fill="#4A7C9E"/>
+          <circle cx="120" cy="65" r="3" fill="#4A7C9E"/>
+          <circle cx="180" cy="55" r="3" fill="#4A7C9E"/>
+          <circle cx="230" cy="60" r="3" fill="#4A7C9E"/>
+          <path d="M60 80 L120 65 L180 55 L230 60" stroke="#4A7C9E" strokeWidth="1.5" strokeDasharray="4,3"/>
+          <path d="M40 140 L40 90 M37 95 L40 90 L43 95" stroke="#D4A847" strokeWidth="1.5"/>
+          <text x="45" y="115" fill="#D4A847" fontSize="9" fontFamily="monospace">H=2.3m</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <h3>Kisozi Drainage Improvement Project</h3>
+        <p>Redesigned a failing drainage system in Kisozi causing chronic seasonal flooding. Conducted field surveys, modelled runoff volumes, and designed improved channel geometry.</p>
+        <div class="project-meta">
+          <span>📍 Kisozi, Kampala</span>
+          <span class="project-result">↓ 40% Flood Events</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#2A1C0E,#5A3A20)">
+        <span class="proj-tag">Road Works</span>
+        <svg viewBox="0 0 280 175" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%;opacity:.75">
+          <rect x="0" y="100" width="280" height="50" fill="#3A2810"/>
+          <rect x="0" y="100" width="280" height="18" fill="#4A3820"/>
+          <rect x="0" y="100" width="280" height="6" fill="#6B5540"/>
+          <rect x="0" y="88" width="280" height="12" fill="#8B6B40" opacity=".5"/>
+          <line x1="140" y1="100" x2="140" y2="150" stroke="#FAF6F0" strokeWidth="3" strokeDasharray="12,10" opacity=".6"/>
+          <path d="M0 88 Q70 40 140 60 Q210 80 280 30" stroke="#B85C38" strokeWidth="2" strokeDasharray="6,4" opacity=".6"/>
+          <text x="14" y="80" fill="#FAF6F0" fontSize="8" fontFamily="monospace" opacity=".5">EXISTING PROFILE</text>
+          <text x="14" y="92" fill="#B85C38" fontSize="8" fontFamily="monospace" opacity=".7">PROPOSED PROFILE</text>
+          <circle cx="50"  cy="94" r="5" fill="#B85C38" opacity=".8"/>
+          <circle cx="140" cy="82" r="5" fill="#B85C38" opacity=".8"/>
+          <circle cx="230" cy="72" r="5" fill="#B85C38" opacity=".8"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <h3>Municipal Road Maintenance Programme</h3>
+        <p>Led supervision of road rehabilitation covering surface treatment, pothole patching, and drainage clearing. Improved overall road condition index significantly.</p>
+        <div class="project-meta">
+          <span>📍 Central Division, KLA</span>
+          <span class="project-result">↑ 20% Road Quality</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <div class="project-thumb" style="background:linear-gradient(135deg,#1A2E1A,#2D4A2D)">
+        <span class="proj-tag">Environmental</span>
+        <svg viewBox="0 0 280 175" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%;opacity:.75">
+          <!-- Water contamination monitoring -->
+          <circle cx="140" cy="88" r="55" fill="none" stroke="#4A7C9E" strokeWidth="1.5" opacity=".4"/>
+          <circle cx="140" cy="88" r="35" fill="none" stroke="#4A7C9E" strokeWidth="1"   opacity=".3"/>
+          <circle cx="140" cy="88" r="15" fill="#1C3A52" opacity=".8"/>
+          <circle cx="140" cy="88" r="7"  fill="#4A7C9E" opacity=".9"/>
+          <!-- Sample points -->
+          <circle cx="90"  cy="65"  r="5" fill="#D4A847"/>
+          <circle cx="190" cy="70"  r="5" fill="#4A6741"/>
+          <circle cx="100" cy="115" r="5" fill="#B85C38"/>
+          <circle cx="185" cy="110" r="5" fill="#D4A847"/>
+          <line x1="90"  y1="65"  x2="140" y2="88" stroke="rgba(255,255,255,.2)" strokeWidth="1"/>
+          <line x1="190" y1="70"  x2="140" y2="88" stroke="rgba(255,255,255,.2)" strokeWidth="1"/>
+          <line x1="100" y1="115" x2="140" y2="88" stroke="rgba(255,255,255,.2)" strokeWidth="1"/>
+          <line x1="185" y1="110" x2="140" y2="88" stroke="rgba(255,255,255,.2)" strokeWidth="1"/>
+          <text x="10" y="165" fill="#4A6741" fontSize="8" fontFamily="monospace" opacity=".8">● Safe  ● Monitor  ● Risk</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <h3>Water Quality & Environmental Survey</h3>
+        <p>Conducted GPS-based environmental data collection mapping contamination risk zones near residential areas. Findings informed remediation planning and policy recommendations.</p>
+        <div class="project-meta">
+          <span>📍 Peri-urban Kampala</span>
+          <span class="project-result">12 Risk Zones Mapped</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="text-align:center;max-width:600px;margin:0 auto 0">
+    <span class="section-label">// What I Offer</span>
+    <h2 class="section-title">Turn Your Infrastructure<br>Challenge Into a Solution</h2>
+    <p class="section-subtitle" style="margin:0 auto;">
+      Whether you're a developer, government body, NGO, or private client —
+      here's how I can add value to your project.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🏗️</span>
+      <h3>Site Supervision</h3>
+      <p>On-site oversight ensuring construction quality, safety compliance, and schedule adherence. I act as your eyes on the ground so nothing falls through the cracks.</p>
+      <span class="service-price">→ Contact for Quote</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🌧️</span>
+      <h3>Drainage Design & Improvement</h3>
+      <p>Full-cycle drainage solutions — from hydrological assessment to channel design and construction specifications. Reduce flooding risk and protect your infrastructure investment.</p>
+      <span class="service-price">→ Contact for Quote</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">📐</span>
+      <h3>AutoCAD Technical Drawings</h3>
+      <p>Precise 2D/3D technical drawings for construction, drainage, and infrastructure projects. Delivered to standard and ready for submission or build.</p>
+      <span class="service-price">→ Contact for Quote</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">📡</span>
+      <h3>GPS & Field Data Collection</h3>
+      <p>Systematic field surveying using GPS equipment for topographic mapping, environmental monitoring, and infrastructure condition assessments.</p>
+      <span class="service-price">→ Contact for Quote</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🛣️</span>
+      <h3>Road Assessment & Maintenance</h3>
+      <p>Condition surveys, pavement evaluation, and maintenance planning for urban and peri-urban roads. Backed by hands-on experience in Kampala's infrastructure context.</p>
+      <span class="service-price">→ Contact for Quote</span>
+    </div>
+
+    <div class="service-card">
+      <span class="service-icon">🌿</span>
+      <h3>Environmental Impact Support</h3>
+      <p>Data collection, risk zone mapping, and technical input for environmental assessments related to construction and urban infrastructure development.</p>
+      <span class="service-price">→ Contact for Quote</span>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:3.5rem">
+    <a href="#contact" class="btn-primary">Request a Service →</a>
+  </div>
+</section>
+
+<!-- TRUST / TESTIMONIAL -->
+<section id="trust">
+  <span class="section-label" style="color:rgba(255,255,255,.5)">// Track Record</span>
+  <blockquote class="trust-quote">
+    Road maintenance works improved overall conditions by 20%, reducing vehicle damage
+    complaints from residents and cutting emergency repair costs for the municipality.
+  </blockquote>
+  <p class="trust-attribution">— Project Impact Summary · Central Division, Kampala</p>
+
+  <div class="trust-metrics">
+    <div class="trust-metric">
+      <span class="trust-metric-num">20%</span>
+      <span class="trust-metric-label">Road Condition<br>Improvement</span>
+    </div>
+    <div class="trust-metric">
+      <span class="trust-metric-num">40%</span>
+      <span class="trust-metric-label">Flood Event<br>Reduction</span>
+    </div>
+    <div class="trust-metric">
+      <span class="trust-metric-num">12+</span>
+      <span class="trust-metric-label">Risk Zones<br>Identified</span>
+    </div>
+    <div class="trust-metric">
+      <span class="trust-metric-num">3+</span>
+      <span class="trust-metric-label">Infrastructure<br>Projects</span>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS / BLOG -->
+<section id="insights">
+  <span class="section-label">// Engineer's Perspective</span>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem">
+    <h2 class="section-title" style="margin:0">Thinking Out Loud<br>on Infrastructure</h2>
+    <p style="font-size:.88rem;color:#5a4535;max-width:320px;line-height:1.7;">
+      Practical insights from field experience — because engineering knowledge
+      should be shared, not siloed.
+    </p>
+  </div>
+
+  <div class="insights-grid">
+    <div class="insight-card">
+      <div class="insight-thumb insight-thumb-1">💧</div>
+      <div class="insight-body">
+        <div class="insight-cat">Urban Hydrology</div>
+        <h3>Why Kampala Floods — And What We Can Actually Do About It</h3>
+        <p>The flooding problem isn't just about rainfall. It's about where our drainage was designed for, and where the city actually grew.</p>
+        <a href="#insights" class="insight-link">Read More</a>
+      </div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-thumb insight-thumb-2">🌱</div>
+      <div class="insight-body">
+        <div class="insight-cat">Practical Engineering</div>
+        <h3>5 Low-Cost Drainage Improvements That Make a Real Difference</h3>
+        <p>Major infrastructure upgrades aren't always possible. Here are evidence-based interventions that deliver results within community budgets.</p>
+        <a href="#insights" class="insight-link">Read More</a>
+      </div>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-thumb insight-thumb-3">🛣️</div>
+      <div class="insight-body">
+        <div class="insight-cat">Field Notes</div>
+        <h3>Lessons From the Road: What Road Maintenance Projects Teach You</h3>
+        <p>After supervising maintenance on Kampala's roads, the biggest takeaway wasn't technical — it was about how decisions get made on the ground.</p>
+        <a href="#insights" class="insight-link">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info">
+    <span class="section-label">// Get In Touch</span>
+    <h2 class="section-title">Let's Solve Something<br>Together</h2>
+    <p class="section-subtitle">
+      Whether you have a specific project or just want to explore possibilities —
+      reach out. I respond within 24 hours.
+    </p>
+
+    <div class="contact-methods">
+      <a href="https://wa.me/256700000000" class="contact-method" target="_blank">
+        <div class="cm-icon cm-whatsapp">💬</div>
+        <div class="cm-detail">
+          <span class="cm-label">WhatsApp (Fastest)</span>
+          <span class="cm-value">+256 700 000 000</span>
+        </div>
+      </a>
+      <a href="tel:+256700000000" class="contact-method">
+        <div class="cm-icon cm-phone">📞</div>
+        <div class="cm-detail">
+          <span class="cm-label">Phone</span>
+          <span class="cm-value">+256 700 000 000</span>
+        </div>
+      </a>
+      <a href="mailto:hello@youremail.com" class="contact-method">
+        <div class="cm-icon cm-email">✉️</div>
+        <div class="cm-detail">
+          <span class="cm-label">Email</span>
+          <span class="cm-value">hello@youremail.com</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <h3>Send a Message</h3>
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="e.g. John Mukasa"/>
+    </div>
+    <div class="form-group">
+      <label>Service Needed</label>
+      <select>
+        <option value="">Select a service…</option>
+        <option>Site Supervision</option>
+        <option>Drainage Design</option>
+        <option>AutoCAD Drawings</option>
+        <option>GPS Data Collection</option>
+        <option>Road Assessment</option>
+        <option>Environmental Survey</option>
+        <option>Other / General Inquiry</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea placeholder="Describe your project or challenge…"></textarea>
+    </div>
+    <button class="form-submit" onclick="handleSubmit(this)">Send Message →</button>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <span class="section-label">// Ready to Start?</span>
+  <h2>Need a Reliable Engineer?<br>Let's Talk.</h2>
+  <p>From site supervision to drainage design — I bring field-tested experience and genuine commitment to every project in Kampala and across Uganda.</p>
+  <a href="#contact" class="btn-white">Start a Conversation →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Civil Engineer · Kampala, Uganda</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 · Built with purpose.</p>
+</footer>
+
+<script>
+  // Navbar shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Form submit handler
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#4A6741';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.project-card, .service-card, .insight-card, .trust-metric').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
